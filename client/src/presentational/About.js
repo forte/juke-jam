@@ -50,13 +50,6 @@ const About = () => (
       </ol>
     </div>
     <div>
-      {'Check out some other of my projects '}
-      <a href="https://www.alexandroforte.com" className="link">
-        HERE
-      </a>
-      .
-    </div>
-    <div>
       <a href="/" className="link">
         Return to Juke Jam
       </a>
