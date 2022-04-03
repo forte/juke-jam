@@ -4,7 +4,7 @@ import '../css/Guest.css';
 import '../css/tailwind.css';
 
 const Playlist = ({ playlist, clickFunc }) => (
-  <div className="playlist" key={playlist.id} onClick={e => clickFunc(e, playlist.id)}>
+  <div className="playlist" key={playlist.id} onClick={(e) => clickFunc(e, playlist.id)}>
     <input id={playlist.id} type="radio" name="playlists" className="buttons hidden" value={playlist.id} />
     <span>
       <img className="cover" src={playlist.artwork} alt="" />

@@ -21,5 +21,4 @@ NotFound.propTypes = {
   history: PropTypes.object.isRequired,
 };
 
-
 export default withRouter(NotFound);

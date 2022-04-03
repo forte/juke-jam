@@ -1,0 +1,8 @@
+{
+  "name": "juke-jam-auth",
+  "version": "1.0.0",
+  "description": "Use this folder to get the developer token used in AppleMusicAuth.js",
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1"
+  }
+}

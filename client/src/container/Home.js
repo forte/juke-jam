@@ -82,5 +82,4 @@ Home.propTypes = {
   history: PropTypes.object.isRequired,
 };
 
-
 export default withRouter(Home);

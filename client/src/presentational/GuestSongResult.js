@@ -14,7 +14,6 @@ const GuestSongResult = ({ song, recommendMe }) => (
   </div>
 );
 
-
 GuestSongResult.propTypes = {
   song: PropTypes.object.isRequired,
   recommendMe: PropTypes.func.isRequired,

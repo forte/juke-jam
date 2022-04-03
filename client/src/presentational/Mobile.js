@@ -8,10 +8,10 @@ const mobileStyle = {
 const Mobile = () => (
   <div>
     <div className="text-2xl text-center" style={mobileStyle}>
-      {'iOS App Coming Soon!'}
+      iOS App Coming Soon!
     </div>
     <div className="text-l text-center mt-6">
-      {'Check out the web experience on a non-mobile computer.'}
+      Check out the web experience on a non-mobile computer.
     </div>
   </div>
 );

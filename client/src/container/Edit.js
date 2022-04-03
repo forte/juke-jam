@@ -17,6 +17,14 @@ class Edit extends Component {
     this.handleMax = this.handleMax.bind(this);
   }
 
+  handleMax(event) {
+    this.setState({ max: event.target.value });
+  }
+
+  handleNameChange(event) {
+    this.setState({ name: event.target.value });
+  }
+
   updateSettings() {
     const playlistID = this.props.playlistID;
     fetch(`${process.env.REACT_APP_API_DOMAIN}/update`, {
@@ -42,21 +50,13 @@ class Edit extends Component {
     });
   }
 
-  handleMax(event) {
-    this.setState({ max: event.target.value });
-  }
-
-  handleNameChange(event) {
-    this.setState({ name: event.target.value });
-  }
-
   render() {
     return (
       <div>
         <div className="editContainer">
           <div className="text-center">
             <div className="italic mt-5">
-              {'update lobby settings for playlist'}
+              update lobby settings for playlist
             </div>
             <div className="code2 mt mb-8">
               {this.props.playlistTitle}
@@ -64,13 +64,13 @@ class Edit extends Component {
           </div>
           <div className="ml-5">
             <span>
-              {'Lobby name:'}
+              Lobby name:
             </span>
             <input type="text" className="pl-2 ml-3 textBar" value={this.state.name} id="nameTextBar" onChange={(event) => { this.handleNameChange(event); }} />
           </div>
           <div className="ml-5">
             <span>
-              {'Max recommendations:'}
+              Max recommendations:
             </span>
             <input id="numberPicker" className="ml-3" type="number" min="0" max="10" value={this.state.max} onChange={this.handleMax} />
           </div>

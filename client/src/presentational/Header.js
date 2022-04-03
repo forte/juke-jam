@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import '../css/tailwind.css';
 import '../css/index.css';
@@ -11,7 +12,6 @@ class Header extends Component {
   }
 
   goHome() {
-    console.log('hi');
     this.props.history.push({
       pathname: '/',
     });
@@ -22,7 +22,7 @@ class Header extends Component {
       <div className="header">
         <div id="headerClick" className="flex" onClick={this.goHome}>
           <div>
-            {'Juke Jam'}
+            Juke Jam
           </div>
           <img className="headerLogo" src={logo} alt="" />
         </div>
@@ -30,4 +30,11 @@ class Header extends Component {
     );
   }
 }
+
+Header.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
+
 export default withRouter(Header);

@@ -7,7 +7,7 @@ const keyId = ''; // PUT THE KEYID HERE - make sure corresponding .p8 file is pr
 
 const jwtToken = jwt.sign({}, privateKey, {
   algorithm: 'ES256',
-  expiresIn: '180d',
+  expiresIn: '360d',
   issuer: teamId,
   header: {
     alg: 'ES256',

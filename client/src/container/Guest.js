@@ -24,6 +24,12 @@ class Guest extends Component {
     window.addEventListener('keypress', this.handleEnterPress);
   }
 
+  handleEnterPress(event) {
+    if (event.key === 'Enter') {
+      this.getTracks();
+    }
+  }
+
   getTracks() {
     const fillin = document.getElementById('text2').value;
     if (!fillin) return;
@@ -52,12 +58,6 @@ class Guest extends Component {
         }
         this.setState({ currentSongs: objects });
       });
-  }
-
-  handleEnterPress(event) {
-    if (event.key === 'Enter') {
-      this.getTracks();
-    }
   }
 
   recommendMe(songID, name, artist) {
@@ -90,7 +90,7 @@ class Guest extends Component {
     if (this.state.noResults) {
       noResults = (
         <div>
-          {'Sorry no results were found.'}
+          Sorry no results were found.
         </div>
       );
     } else {
@@ -111,14 +111,14 @@ class Guest extends Component {
       <div className="text-center">
         <div>
           <div className="italic">
-            {'you are recommending songs for'}
+            you are recommending songs for
           </div>
           <div className="lobbyName">
             { this.props.name }
           </div>
         </div>
         <div className="searchWords">
-         Search for a track you'd like to recommend below:
+          Search for a track you'd like to recommend below:
         </div>
         <SearchBar
           clickFunc={this.getTracks}
@@ -128,7 +128,7 @@ class Guest extends Component {
         {noResults}
         {spinner}
         <div className="songsGuest">
-          {this.state.currentSongs.map(song => (
+          {this.state.currentSongs.map((song) => (
             <GuestSongResult
               key={song.id}
               song={song}
@@ -146,6 +146,5 @@ Guest.propTypes = {
   playlistID: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
 };
-
 
 export default withRouter(Guest);

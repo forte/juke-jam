@@ -34,54 +34,6 @@ class Host extends Component {
     this.getPlaylists();
   }
 
-  getPlaylists() {
-    const allPlaylists = this.state.allPlaylists;
-    this.musicInstance.api.library.playlists({ limit: 200 }).then((response) => {
-      const ids = [];
-      for (let i = 0; i < response.length; i += 1) {
-        const playlist = response[i];
-        const obj = {
-          name: playlist.attributes.name,
-          id: playlist.id.substring(2),
-          key: i,
-          artwork: window.MusicKit.formatArtworkURL(playlist.attributes.artwork),
-        };
-        ids.push(response[i].id);
-        allPlaylists.push(obj);
-      }
-      this.setState({ allPlaylists: allPlaylists }, function () {
-        fetch(`${process.env.REACT_APP_API_DOMAIN}/getAll`, {
-          method: 'GET',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-        }).then(response2 => response2.json()).then((resp) => {
-          const lobbies = resp.lobbies;
-          const lobbyPlaylists = [];
-          const notLobbyPlaylists = [];
-          const playlists = this.state.allPlaylists;
-          const allFoundPlaylists = playlists.map(x => x.id);
-
-          for (let j = 0; j < allFoundPlaylists.length; j += 1) {
-            const id = allFoundPlaylists[j];
-            const plist = playlists[j];
-            if (lobbies.includes(id)) {
-              lobbyPlaylists.push(plist);
-            } else {
-              notLobbyPlaylists.push(plist);
-            }
-          }
-          this.setState({
-            lobbyPlaylists: lobbyPlaylists,
-            notLobbyPlaylists: notLobbyPlaylists,
-            spinner: false,
-          });
-        });
-      });
-    });
-  }
-
   handleSubmit() {
     // send lobby settings in this function
     const temp = document.querySelector('input[name="playlists"]:checked');
@@ -117,10 +69,53 @@ class Host extends Component {
     this.setState({ name: event.target.value });
   }
 
-  formatArtworkURL(url, height, width) {
-    return this.musicInstance.formatArtworkURL(url, height, width);
-  }
+  getPlaylists() {
+    const allPlaylists = this.state.allPlaylists;
+    this.musicInstance.api.library.playlists({ limit: 200 }).then((response) => {
+      const ids = [];
+      for (let i = 0; i < response.length; i += 1) {
+        const playlist = response[i];
+        const obj = {
+          name: playlist.attributes.name,
+          id: playlist.id.substring(2),
+          key: i,
+          // artwork: window.MusicKit.formatArtworkURL(playlist.attributes.artwork),  // url was removed from api
+        };
+        ids.push(response[i].id);
+        allPlaylists.push(obj);
+      }
+      this.setState({ allPlaylists: allPlaylists }, function () {
+        fetch(`${process.env.REACT_APP_API_DOMAIN}/getAll`, {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+        }).then((response2) => response2.json()).then((resp) => {
+          const lobbies = resp.lobbies;
+          const lobbyPlaylists = [];
+          const notLobbyPlaylists = [];
+          const playlists = this.state.allPlaylists;
+          const allFoundPlaylists = playlists.map((x) => x.id);
 
+          for (let j = 0; j < allFoundPlaylists.length; j += 1) {
+            const id = allFoundPlaylists[j];
+            const plist = playlists[j];
+            if (lobbies.includes(id)) {
+              lobbyPlaylists.push(plist);
+            } else {
+              notLobbyPlaylists.push(plist);
+            }
+          }
+          this.setState({
+            lobbyPlaylists: lobbyPlaylists,
+            notLobbyPlaylists: notLobbyPlaylists,
+            spinner: false,
+          });
+        });
+      });
+    });
+  }
 
   logout() {
     this.musicInstance.unauthorize().then(() => {
@@ -170,7 +165,7 @@ class Host extends Component {
     } else if (!this.state.spinner) {
       lobbyPlaylists = (
         <div className="text-center mt-4 italic">
-          {'You have not created any lobbies yet.'}
+          You have not created any lobbies yet.
         </div>
       );
     } else {
@@ -191,7 +186,7 @@ class Host extends Component {
     } else if (!this.state.spinner) {
       notLobbyPlaylists = (
         <div className="text-center italic">
-          {'You do not have any playlists.'}
+          You do not have any playlists.
         </div>
       );
     } else {
@@ -219,19 +214,19 @@ class Host extends Component {
         </div>
 
         <div className="hostSubsection mt-4">
-          {'CHECK OUT A CURRENT LOBBY'}
+          CHECK OUT A CURRENT LOBBY
         </div>
 
         {spinner}
         {lobbyPlaylists}
 
         <div className="hostSubsection mt-8">
-          {'CREATE A NEW LOBBY'}
+          CREATE A NEW LOBBY
         </div>
 
         <div className="settingsWords -mb-3">
           <span className="numbered"> 1. </span>
-          {'Select your playlist:'}
+          Select your playlist:
         </div>
 
         {spinner}
@@ -240,18 +235,18 @@ class Host extends Component {
         <div className="maxRecSection">
           <span className="settingsWords pr-2">
             <span className="numbered"> 2. </span>
-            {'Set max recommendations per person:'}
+            Set max recommendations per person:
           </span>
           <input id="numberPicker" type="number" min="0" max="10" value={this.state.max} onChange={this.handleMax} />
           <div id="maxSpan" className="mb-6">
             <b>
               {'Note: '}
             </b>
-            {'The default value of 0 is no limit.'}
+            The default value of 0 is no limit.
           </div>
           <span className="settingsWords pr-2">
             <span className="numbered"> 3. </span>
-            {'Name your lobby:'}
+            Name your lobby:
           </span>
           <input type="text" className="pl-2 textBar" id="nameTextBar" onChange={(event) => { this.handleNameChange(event); }} />
         </div>

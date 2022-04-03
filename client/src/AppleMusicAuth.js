@@ -8,7 +8,7 @@ export default class AppleMusicAuth {
 
   configure() { //eslint-disable-line
     return new Promise(function (resolve, reject) {
-      let key = "JukeJam-3OY6MXSIAB";
+      const key = 'JukeJam-3OY6MXSIAB';
       fetch(`https://www.alexandroforte.com/getTokens?key=${key}`, {
         method: 'GET',
         headers: {

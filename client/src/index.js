@@ -15,7 +15,7 @@ import registerServiceWorker from './registerServiceWorker';
 import AppleMusicAuth from './AppleMusicAuth';
 
 const music = AppleMusicAuth.sharedProvider();
-music.configure().then((resp) => {
+music.configure().then(() => {
   const musicInstance = AppleMusicAuth.getMusicInstance();
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     // serve mobile view

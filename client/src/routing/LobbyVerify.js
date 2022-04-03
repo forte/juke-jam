@@ -85,12 +85,12 @@ class LobbyVerify extends Component {
     if (this.state.isValid === true || this.state.isValid === false) {
       if (this.state.isValid === true) {
         return (
-            <Lobby
-              playlistID={this.state.playlistID}
-              name={this.state.name}
-              max={this.state.max}
-              musicInstance={this.props.musicInstance}
-            />
+          <Lobby
+            playlistID={this.state.playlistID}
+            name={this.state.name}
+            max={this.state.max}
+            musicInstance={this.props.musicInstance}
+          />
         );
       }
       return <Redirect to="/" />;

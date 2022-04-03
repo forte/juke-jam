@@ -46,7 +46,7 @@ class Lobby extends Component {
       body: JSON.stringify({
         playlistID: playlistID,
       }),
-    }).then(response => response.json())
+    }).then((response) => response.json())
       .then((resp) => {
         if (resp.list.length === 0) {
           this.setState({
@@ -171,7 +171,7 @@ class Lobby extends Component {
       <div>
         <div className="code">
           <div>
-            {'Friends can send you recommendations at this link:'}
+            Friends can send you recommendations at this link:
           </div>
           <CopyBar
             textbarID="linkInput"
@@ -186,7 +186,7 @@ class Lobby extends Component {
         <hr className="divider" />
         <div className="text-center mt-6">
           <div className="italic">
-            {'recommended songs for'}
+            recommended songs for
           </div>
           <div className="lobbyName">
             { this.props.name }

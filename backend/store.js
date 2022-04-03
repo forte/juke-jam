@@ -22,13 +22,13 @@ module.exports = {
     return knex.select()
       .from('lobbies')
       .where('lobby_id', lobbyID)
-      .then(res => res);
+      .then((res) => res);
   },
 
   getAllLobbies() {
     return knex.select('lobby_id')
       .from('lobbies')
-      .then(res => res);
+      .then((res) => res);
   },
 
   updateLobby({
@@ -68,7 +68,7 @@ module.exports = {
         'lobby_id': lobbyID,
         'song_id': songID,
       })
-      .then(res => res);
+      .then((res) => res);
   },
 
   numberRecommended({
@@ -81,7 +81,7 @@ module.exports = {
         'lobby_id': lobbyID,
         'ip_address': ipAddress,
       })
-      .then(res => res);
+      .then((res) => res);
   },
 
   getRecommendations({
@@ -93,7 +93,7 @@ module.exports = {
         'lobby_id': lobbyID,
         'status': 'new',
       })
-      .then(res => res);
+      .then((res) => res);
   },
 
   markRecommendation({

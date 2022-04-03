@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import '../css/tailwind.css';
 import '../css/index.css';
 
-const SearchBar = props => (
+const SearchBar = (props) => (
   <div>
     <input type="text" className="pl-2 textBar textBarForSearch" id={props.textbarID} />
     <input className="mdBtn" type="button" value={props.value} onClick={props.clickFunc} />

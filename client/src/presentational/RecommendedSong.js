@@ -10,13 +10,13 @@ const HostSongResults = ({ addMe, deleteMe, song }) => (
     <span className="ml-2 mr-1">
       <MiniButton
         value="Add"
-        clickFunc={event => addMe(event, song.songID, song.name, song.artist)}
+        clickFunc={(event) => addMe(event, song.songID, song.name, song.artist)}
       />
     </span>
     <span>
       <MiniButton
         value="Delete"
-        clickFunc={event => deleteMe(event, song.songID)}
+        clickFunc={(event) => deleteMe(event, song.songID)}
       />
     </span>
   </div>
