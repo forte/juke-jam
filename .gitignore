@@ -1,0 +1,12 @@
+build
+
+# operating system
+.DS_Store
+
+# dependencies
+node_modules
+
+#style files
+client/src/css/*.css
+client/src/css/*.css.map
+!client/src/css/tailwind.src.css

@@ -1,0 +1,162 @@
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Lato";
+  background-color: #fff;
+  color: #444;
+}
+
+#root {
+  margin: 0;
+}
+
+.allBtns {
+  cursor: pointer;
+  background-color: #444;
+  color: #fff;
+
+  @time: 200ms;
+
+  &:hover {
+    background-color: #888;
+    -webkit-transition: background-color @time linear, color @time linear;
+    -ms-transition: background-color @time linear, color @time linear;
+    transition: background-color @time linear, color @time linear;
+  }
+}
+
+.mainBtn {
+  .allBtns;
+
+  height: 40px;
+  width: 100px;
+}
+
+.mdBtn {
+  .allBtns;
+
+  border: #444 solid 1px;
+  height: 33px;
+  padding-top: 3px;
+  width: 70px;
+}
+
+.miniBtn {
+  .allBtns;
+
+  height: 20px;
+  width: 50px;
+  font-size: 12px;
+}
+
+.textBar {
+  border: #444 solid 1px;
+  height: 33px;
+}
+
+.textBarForSearch {
+  .textBar;
+
+  border-right: 0;
+}
+
+.link {
+  color: #0c59b0;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.85;
+  }
+}
+
+.spinner {
+  border: 6px solid white;
+  border-top: 6px solid #444;
+  border-radius: 50%;
+  text-align: center;
+  width: 45px;
+  height: 45px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.header {
+  width: 100%;
+  height: 70px;
+  color: white;
+  background-color: #444;
+  margin: 0;
+  box-shadow: 1px 4px 7px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-size: 50px;
+  padding-top: 7px;
+  position: fixed;
+  display: flex;
+  line-height: 0.2;
+  z-index: 100;
+}
+
+#headerBuffer {
+  margin: 0;
+  padding-top: 80px;
+}
+
+.headerLogo {
+  height: 56px;
+  margin-top: -10px;
+}
+
+.editSVG {
+  cursor: pointer;
+  position: absolute;
+  height: 20px;
+  top: 10px;
+  right: 10px;
+  z-index: 11;
+
+  &:hover {
+    height: 30px;
+    top: 5px;
+    right: 5px;
+  }
+}
+
+#headerClick {
+  &:hover {
+    cursor: pointer;
+    opacity: 0.85;
+  }
+}
+
+.editContainer {
+  height: 260px;
+  width: 350px;
+  border: solid 1px #444;
+  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  background-color: white;
+  margin: 0 auto;
+}
+
+.scroller {
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.numbered {
+  font-family: "Raleway";
+  font-weight: 900;
+  font-size: 32px;
+}
