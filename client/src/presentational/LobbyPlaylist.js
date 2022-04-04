@@ -8,7 +8,7 @@ import editSVG from '../assets/edit.svg';
 const LobbyPlaylist = ({ playlist, clickFunc, editFunc }) => (
   <div className="lobbyPlaylist" key={playlist.id}>
     <span>
-      <img className="cover" src={playlist.artwork} alt="" />
+      {/* <img className="cover" src={playlist.artwork} alt="" />  # removed bc can no longer get artwork */}
       <img className="editSVG" src={editSVG} title="Edit Settings" alt="Edit Settings" onClick={() => editFunc(playlist.id)} />
       <div className="playlistName">
         &#9835;

@@ -75,14 +75,15 @@ class Host extends Component {
       const ids = [];
       for (let i = 0; i < response.length; i += 1) {
         const playlist = response[i];
-        const obj = {
-          name: playlist.attributes.name,
-          id: playlist.id.substring(2),
-          key: i,
-          // artwork: window.MusicKit.formatArtworkURL(playlist.attributes.artwork),  // url was removed from api
-        };
-        ids.push(response[i].id);
-        allPlaylists.push(obj);
+        if (playlist.attributes.canEdit) {
+          const obj = {
+            name: playlist.attributes.name,
+            id: playlist.id.substring(2),
+            key: i,
+          };
+          ids.push(response[i].id);
+          allPlaylists.push(obj);
+        }
       }
       this.setState({ allPlaylists: allPlaylists }, function () {
         fetch(`${process.env.REACT_APP_API_DOMAIN}/getAll`, {
